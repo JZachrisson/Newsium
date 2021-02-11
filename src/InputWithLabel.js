@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './App.module.css';
 
 const InputWithLabel = ({
   id,
@@ -18,7 +19,7 @@ const InputWithLabel = ({
 
   return (
     <div>
-      <label htmlFor={id} className="label">
+      <label htmlFor={id} className={styles.label}>
         {children}
       </label>
       &nbsp;
@@ -28,7 +29,7 @@ const InputWithLabel = ({
         type={type}
         value={value}
         onChange={onInputChange}
-        className="input"
+        className={styles.input}
       />
     </div>
   );

@@ -1,4 +1,6 @@
 import React from 'react';
+import styles from './App.module.css';
+import cs from 'classnames';
 
 const Item = ({ item, onRemoveItem }) => {
   const handleRemoveItem = () => {
@@ -6,7 +8,7 @@ const Item = ({ item, onRemoveItem }) => {
   };
 
   return (
-    <div className="item">
+    <div className={styles.item}>
       <span style={{ width: '40%' }}>
         <a href={item.url}>{item.title}</a>
       </span>
@@ -17,7 +19,7 @@ const Item = ({ item, onRemoveItem }) => {
         <button
           type="button"
           onClick={handleRemoveItem}
-          className="button button_small"
+          className={cs(styles.button, styles.buttonSmall)}
         >
           Dismiss
         </button>
