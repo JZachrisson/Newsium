@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './App.module.css';
+import { StyledLabel, StyledInput } from './styles';
 
 const InputWithLabel = ({
   id,
@@ -19,17 +20,14 @@ const InputWithLabel = ({
 
   return (
     <div>
-      <label htmlFor={id} className={styles.label}>
-        {children}
-      </label>
+      <StyledLabel htmlFor={id}>{children}</StyledLabel>
       &nbsp;
-      <input
+      <StyledInput
         ref={inputRef}
         id={id}
         type={type}
         value={value}
         onChange={onInputChange}
-        className={styles.input}
       />
     </div>
   );

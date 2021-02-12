@@ -5,6 +5,7 @@ import storiesReducer from './storiesReducer';
 import SearchForm from './SearchForm';
 import axios from 'axios';
 import styles from './App.module.css';
+import { StyledContainer, StyledHeadlinePrimary } from './styles';
 
 const API_ENDPOINT = 'http://hn.algolia.com/api/v1/search?query=';
 
@@ -54,8 +55,8 @@ function App() {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.headlinePrimary}>My Hacker Stories</h1>
+    <StyledContainer>
+      <StyledHeadlinePrimary>My Hacker Stories</StyledHeadlinePrimary>
       <SearchForm
         searchTerm={searchTerm}
         onSearchInput={handleSearchInput}
@@ -69,7 +70,7 @@ function App() {
       ) : (
         <List list={stories.data} onRemoveItem={handleRemoveStory} />
       )}
-    </div>
+    </StyledContainer>
   );
 }
 
