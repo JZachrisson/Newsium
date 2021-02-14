@@ -1,4 +1,33 @@
-const storiesReducer = (state, action) => {
+type StoriesState = {
+  data: Stories;
+  isLoading: boolean;
+  isError: boolean;
+};
+
+type StoriesAction =
+  | StoriesFetchInitAction
+  | StoriesFetchSuccessAction
+  | StoriesFetchFailureAction
+  | StoriesRemoveAction;
+
+interface StoriesFetchInitAction {
+  type: 'STORIES_FETCH_INIT';
+}
+
+interface StoriesFetchSuccessAction {
+  type: 'STORIES_FETCH_SUCCESS';
+  payload: Stories;
+}
+
+interface StoriesFetchFailureAction {
+  type: 'STORIES_FETCH_FAILURE';
+}
+interface StoriesRemoveAction {
+  type: 'REMOVE_STORY';
+  payload: Story;
+}
+
+const storiesReducer = (state: StoriesState, action: StoriesAction) => {
   switch (action.type) {
     case 'STORIES_FETCH_INIT':
       return {

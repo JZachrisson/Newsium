@@ -22,19 +22,19 @@ export const StyledItem = styled.div`
   padding-bottom: 5px;
 `;
 
-export const StyledColumn = styled.span`
-  padding: 0 5px;
-  white-space: nowrap;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+// export const StyledColumn = styled.span`
+//   padding: 0 5px;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   white-space: nowrap;
+//   text-overflow: ellipsis;
 
-  a {
-    color: inherit;
-  }
+//   a {
+//     color: inherit;
+//   }
 
-  width: ${(props) => props.width};
-`;
+//   width: ${(props) => props.width};
+// `;
 
 export const StyledButton = styled.button`
   background: transparent;

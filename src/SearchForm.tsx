@@ -2,7 +2,17 @@ import React from 'react';
 import InputWithLabel from './InputWithLabel';
 import { StyledSearchForm, StyledButtonLarge } from './styles';
 
-const SearchForm = ({ searchTerm, onSearchInput, onSearchSubmit }) => {
+type SearchFormProps = {
+  searchTerm: string;
+  onSearchInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSearchSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+};
+
+const SearchForm = ({
+  searchTerm,
+  onSearchInput,
+  onSearchSubmit,
+}: SearchFormProps) => {
   return (
     <div>
       <StyledSearchForm onSubmit={onSearchSubmit}>

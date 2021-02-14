@@ -4,7 +4,6 @@ import useSemiPersistentState from './useSemiPersistentState';
 import storiesReducer from './storiesReducer';
 import SearchForm from './SearchForm';
 import axios from 'axios';
-import styles from './App.module.css';
 import { StyledContainer, StyledHeadlinePrimary } from './styles';
 
 const API_ENDPOINT = 'http://hn.algolia.com/api/v1/search?query=';
@@ -17,6 +16,8 @@ function App() {
     isError: false,
   });
   const [url, setUrl] = React.useState(`${API_ENDPOINT}${searchTerm}`);
+
+  console.log('B:A');
 
   const handleFetchStories = React.useCallback(async () => {
     if (searchTerm === '') return;
@@ -38,25 +39,25 @@ function App() {
     handleFetchStories();
   }, [handleFetchStories]);
 
-  const handleRemoveStory = (item) => {
+  const handleRemoveStory = (item: Story) => {
     dispatchStories({
       type: 'REMOVE_STORY',
       payload: item,
     });
   };
 
-  const handleSearchInput = (event) => {
+  const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearchSubmit = (event) => {
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     setUrl(`${API_ENDPOINT}${searchTerm}`);
     event.preventDefault();
   };
 
   return (
     <StyledContainer>
-      <StyledHeadlinePrimary>My Hacker Stories</StyledHeadlinePrimary>
+      <StyledHeadlinePrimary>My Hacker Stories.</StyledHeadlinePrimary>
       <SearchForm
         searchTerm={searchTerm}
         onSearchInput={handleSearchInput}
