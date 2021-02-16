@@ -25,9 +25,7 @@ const SearchForm = ({
           <strong>Search:</strong>
         </InputWithLabel>
 
-        <StyledButtonLarge type="button" disabled={!searchTerm}>
-          Submit
-        </StyledButtonLarge>
+        <StyledButtonLarge disabled={!searchTerm}>Submit</StyledButtonLarge>
       </StyledSearchForm>
     </div>
   );

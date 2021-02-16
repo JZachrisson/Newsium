@@ -6,6 +6,7 @@ export const StyledContainer = styled.div`
 
   background: #83a4d4;
   background: linear-gradient(to left, #b6fbff, #83a4d4);
+  overflow: auto;
 
   color: #171212;
 `;

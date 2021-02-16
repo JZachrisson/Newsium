@@ -7,6 +7,7 @@ const SORTS: { [list: string]: any } = {
   NONE: (list: any) => list,
   TITLE: (list: any) => sortBy(list, 'title'),
   AUTHOR: (list: any) => sortBy(list, 'author'),
+  DATE: (list: any) => sortBy(list, 'created_at'),
   COMMENT: (list: any) => sortBy(list, 'num_comments').reverse(),
   POINT: (list: any) => sortBy(list, 'points').reverse(),
 };
@@ -17,6 +18,7 @@ type ListProps = {
 };
 
 const List = ({ list, onRemoveItem }: ListProps) => {
+  console.log('LIST', list);
   const [sort, setSort] = React.useState({
     sortKey: 'NONE',
     isReverse: false,
@@ -41,7 +43,12 @@ const List = ({ list, onRemoveItem }: ListProps) => {
             Title
           </StyledButtonSmall>
         </span>
-        <span style={{ width: '30%' }}>
+        <span style={{ width: '20%' }}>
+          <StyledButtonSmall type="button" onClick={() => handleSort('DATE')}>
+            Date
+          </StyledButtonSmall>
+        </span>
+        <span style={{ width: '10%' }}>
           {' '}
           <StyledButtonSmall type="button" onClick={() => handleSort('AUTHOR')}>
             Author

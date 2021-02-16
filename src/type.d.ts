@@ -3,6 +3,7 @@ type Story = {
   url: string;
   title: string;
   author: string;
+  created_at_i: number;
   num_comments: number;
   points: number;
 };

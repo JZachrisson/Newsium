@@ -5,7 +5,11 @@ import storiesReducer from './storiesReducer';
 import SearchForm from './SearchForm';
 import LastSearches from './LastSearches';
 import axios from 'axios';
-import { StyledContainer, StyledHeadlinePrimary } from './styles';
+import {
+  StyledContainer,
+  StyledHeadlinePrimary,
+  StyledButtonSmall,
+} from './styles';
 
 const API_BASE = 'http://hn.algolia.com/api/v1';
 const API_SEARCH = '/search';
@@ -129,9 +133,9 @@ function App() {
       {stories.isLoading ? (
         <p>Loading...</p>
       ) : (
-        <button type="button" onClick={handleMore}>
+        <StyledButtonSmall type="button" onClick={handleMore}>
           More
-        </button>
+        </StyledButtonSmall>
       )}
     </StyledContainer>
   );
