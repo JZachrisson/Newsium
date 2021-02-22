@@ -7,6 +7,7 @@ export const StyledContainer = styled.div`
   background: #83a4d4;
   background: linear-gradient(to left, #b6fbff, #83a4d4);
   overflow: auto;
+  height: 100vh;
 
   color: #171212;
 `;
@@ -23,19 +24,19 @@ export const StyledItem = styled.div`
   padding-bottom: 5px;
 `;
 
-// export const StyledColumn = styled.span`
-//   padding: 0 5px;
-//   white-space: nowrap;
-//   overflow: hidden;
-//   white-space: nowrap;
-//   text-overflow: ellipsis;
+export const StyledColumn = styled.span`
+  padding: 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
-//   a {
-//     color: inherit;
-//   }
+  a {
+    color: inherit;
+  }
 
-//   width: ${(props) => props.width};
-// `;
+  width: ${(props: { width: any }) => props.width};
+`;
 
 export const StyledButton = styled.button`
   background: transparent;

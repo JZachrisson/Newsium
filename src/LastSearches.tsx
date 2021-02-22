@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledButtonSmall } from './styles';
 
 type LastSearchesProps = {
   lastSearches: string[];
@@ -9,13 +10,13 @@ const LastSearches = ({ lastSearches, onLastSearch }: LastSearchesProps) => {
   return (
     <div>
       {lastSearches.map((searchTerm, index) => (
-        <button
+        <StyledButtonSmall
           key={searchTerm + index}
           type="button"
           onClick={() => onLastSearch(searchTerm)}
         >
           {searchTerm}
-        </button>
+        </StyledButtonSmall>
       ))}
     </div>
   );

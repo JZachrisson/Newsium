@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './App.module.css';
 import cs from 'classnames';
 import moment from 'moment';
-import { StyledItem, StyledButtonSmall } from './styles';
+import { StyledItem, StyledButtonSmall, StyledColumn } from './styles';
 import { ReactComponent as Check } from './check.svg';
 
 type ItemProps = {
@@ -17,18 +17,24 @@ const Item = ({ item, onRemoveItem }: ItemProps) => {
 
   return (
     <StyledItem>
-      <span style={{ width: '40%' }}>
+      <StyledColumn className="show" width="40%">
         <a href={item.url}>{item.title}</a>
-      </span>
+      </StyledColumn>
 
-      <span style={{ width: '20%' }}>
+      <StyledColumn width="20%">
         {' '}
         {moment.unix(item.created_at_i).format('DD-MM-YYYY')}
-      </span>
-      <span style={{ width: '10%' }}> {item.author}</span>
-      <span style={{ width: '10%' }}> {item.num_comments}</span>
-      <span style={{ width: '10%' }}> {item.points}</span>
-      <span style={{ width: '10%' }}>
+      </StyledColumn>
+      <StyledColumn width="10%"> {item.author}</StyledColumn>
+      <StyledColumn className="hide" width="10%">
+        {' '}
+        {item.num_comments}
+      </StyledColumn>
+      <StyledColumn className="hide" width="10%">
+        {' '}
+        {item.points}
+      </StyledColumn>
+      <StyledColumn className="hide" width="10%">
         <StyledButtonSmall
           type="button"
           onClick={handleRemoveItem}
@@ -37,7 +43,7 @@ const Item = ({ item, onRemoveItem }: ItemProps) => {
           Dismiss
           <Check height="18px" width="18px" />
         </StyledButtonSmall>
-      </span>
+      </StyledColumn>
     </StyledItem>
   );
 };

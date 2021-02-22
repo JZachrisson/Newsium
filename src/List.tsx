@@ -18,7 +18,6 @@ type ListProps = {
 };
 
 const List = ({ list, onRemoveItem }: ListProps) => {
-  console.log('LIST', list);
   const [sort, setSort] = React.useState({
     sortKey: 'NONE',
     isReverse: false,
@@ -39,7 +38,11 @@ const List = ({ list, onRemoveItem }: ListProps) => {
     <div>
       <div style={{ display: 'flex' }}>
         <span style={{ width: '40%' }}>
-          <StyledButtonSmall type="button" onClick={() => handleSort('TITLE')}>
+          <StyledButtonSmall
+            style={{ marginTop: '10px' }}
+            type="button"
+            onClick={() => handleSort('TITLE')}
+          >
             Title
           </StyledButtonSmall>
         </span>
@@ -54,7 +57,7 @@ const List = ({ list, onRemoveItem }: ListProps) => {
             Author
           </StyledButtonSmall>
         </span>
-        <span style={{ width: '10%' }}>
+        <span className="hide" style={{ width: '10%' }}>
           {' '}
           <StyledButtonSmall
             type="button"
@@ -63,12 +66,14 @@ const List = ({ list, onRemoveItem }: ListProps) => {
             Comments
           </StyledButtonSmall>
         </span>
-        <span style={{ width: '10%' }}>
+        <span className="hide" style={{ width: '10%' }}>
           <StyledButtonSmall type="button" onClick={() => handleSort('POINT')}>
             Points
           </StyledButtonSmall>
         </span>
-        <span style={{ width: '10%' }}>Actions</span>
+        <span className="hide" style={{ width: '10%' }}>
+          Actions
+        </span>
       </div>
       {sortedList.map((item: any) => (
         <Item key={item.objectID} item={item} onRemoveItem={onRemoveItem} />
