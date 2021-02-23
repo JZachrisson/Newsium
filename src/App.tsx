@@ -17,7 +17,8 @@ const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
 
 const getUrl = (searchTerm: string, page: number) =>
-  `${API_BASE}${API_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`;
+  `http://localhost:8080/api/news/${searchTerm}/${page}`;
+// `${API_BASE}${API_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`;
 
 const extractSearchTerm = (url: string) =>
   url
@@ -61,11 +62,12 @@ function App() {
     try {
       const lastUrl = urls[urls.length - 1];
       const result = await axios.get(lastUrl);
+      console.log('RESULT', result);
 
       dispatchStories({
         type: 'STORIES_FETCH_SUCCESS',
         payload: {
-          list: result.data.hits,
+          list: result.data,
           page: result.data.page,
         },
       });
