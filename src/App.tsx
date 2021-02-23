@@ -114,7 +114,7 @@ function App() {
 
   return (
     <StyledContainer>
-      <StyledHeadlinePrimary>My Hacker Stories.</StyledHeadlinePrimary>
+      <StyledHeadlinePrimary>Newsium: Hacker News </StyledHeadlinePrimary>
       <SearchForm
         searchTerm={searchTerm}
         onSearchInput={handleSearchInput}

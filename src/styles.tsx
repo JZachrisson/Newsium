@@ -4,12 +4,20 @@ export const StyledContainer = styled.div`
   height: 100vw;
   padding: 20px;
 
-  background: #83a4d4;
-  background: linear-gradient(to left, #b6fbff, #83a4d4);
+  /* background: #83a4d4;
+  background: linear-gradient(to left, #b6fbff, #83a4d4); */
   overflow: auto;
   height: 100vh;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(9, 67, 121, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: white;
 
-  color: #171212;
+  /* color: #171212; */
 `;
 
 export const StyledHeadlinePrimary = styled.h1`
@@ -40,19 +48,20 @@ export const StyledColumn = styled.span`
 
 export const StyledButton = styled.button`
   background: transparent;
-  border: 1px solid #171212;
+  color: white;
+  border: 1px solid white;
   padding: 5px;
   cursor: pointer;
 
   transition: all 0.1s ease-in;
 
   &:hover {
-    background: #171212;
-    color: #ffffff;
+    background: #ffff;
+    color: #171212;
   }
   &:hover > svg > g {
-    fill: #ffffff;
-    stroke: #ffffff;
+    fill: #171212;
+    stroke: #171212;
   }
 `;
 
@@ -71,16 +80,17 @@ export const StyledSearchForm = styled.form`
 `;
 
 export const StyledLabel = styled.label`
-  border-top: 1px solid #171212;
-  border-left: 1px solid #171212;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
   padding-left: 5px;
   font-size: 24px;
 `;
 
 export const StyledInput = styled.input`
   border: none;
-  border-bottom: 1px solid #171212;
-  background-color: transparent;
+
+  border-bottom: 1px solid white;
+  background-color: white;
 
   font-size: 24px;
 `;
