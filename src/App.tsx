@@ -16,14 +16,18 @@ const API_SEARCH = '/search';
 const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
 
-const getUrl = (searchTerm: string, page: number) =>
-  `http://localhost:8080/api/news/${searchTerm}/${page}`;
+const getUrl = (searchTerm: string, page: number) => {
+  console.log('PAGE', page);
+  return `http://localhost:8080/api/news/${searchTerm}/${page}`;
+};
+
 // `${API_BASE}${API_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`;
 
-const extractSearchTerm = (url: string) =>
-  url
-    .substring(url.lastIndexOf('?') + 1, url.lastIndexOf('&'))
-    .replace(PARAM_SEARCH, '');
+const extractSearchTerm = (url: string) => {
+  console.log('URL IN EXTRACT', url);
+  return url.substring(url.lastIndexOf('?') + 1, url.lastIndexOf('&'));
+  // .replace(PARAM_SEARCH, '');
+};
 
 const getLastSearches = (urls: string[]) =>
   urls
@@ -61,13 +65,15 @@ function App() {
     dispatchStories({ type: 'STORIES_FETCH_INIT' });
     try {
       const lastUrl = urls[urls.length - 1];
+      console.log('URL', urls);
+      console.log('LASTURL', lastUrl);
       const result = await axios.get(lastUrl);
-      console.log('RESULT', result);
+      console.log('RESULT', result.data);
 
       dispatchStories({
         type: 'STORIES_FETCH_SUCCESS',
         payload: {
-          list: result.data,
+          list: result.data.hits,
           page: result.data.page,
         },
       });
@@ -102,13 +108,16 @@ function App() {
   };
 
   const handleSearch = (searchTerm: string, page: any) => {
+    console.log('PAGE IN HANDLE SEARCG', page);
     const url = getUrl(searchTerm, page);
     setUrls(urls.concat(url));
   };
 
   const handleMore = () => {
     const lastUrl = urls[urls.length - 1];
+    console.log('LAST URL IN HANDLE MORE', lastUrl);
     const searchTerm = extractSearchTerm(lastUrl);
+    console.log('SEARCH TERM IN HANDLE MORE', searchTerm);
     handleSearch(searchTerm, stories.page + 1);
   };
 
