@@ -11,23 +11,18 @@ import {
   StyledButtonSmall,
 } from './styles';
 
-const API_BASE = 'http://hn.algolia.com/api/v1';
-const API_SEARCH = '/search';
 const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
 
 const getUrl = (searchTerm: string, page: number) => {
   console.log('PAGE', page);
-  return `http://localhost:8080/api/news/${searchTerm}/${page}`;
+  return `http://localhost:8080/api/news/?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`;
 };
 
-// `${API_BASE}${API_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`;
-
-const extractSearchTerm = (url: string) => {
-  console.log('URL IN EXTRACT', url);
-  return url.substring(url.lastIndexOf('?') + 1, url.lastIndexOf('&'));
-  // .replace(PARAM_SEARCH, '');
-};
+const extractSearchTerm = (url: string) =>
+  url
+    .substring(url.lastIndexOf('?') + 1, url.lastIndexOf('&'))
+    .replace(PARAM_SEARCH, '');
 
 const getLastSearches = (urls: string[]) =>
   urls
