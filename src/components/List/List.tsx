@@ -1,6 +1,6 @@
 import React from 'react';
 import Item from './Item';
-import { StyledButtonSmall } from './styles';
+import { StyledButtonSmall } from '../../styles';
 import { sortBy } from 'lodash';
 
 const SORTS: { [list: string]: any } = {

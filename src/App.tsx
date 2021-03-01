@@ -1,9 +1,9 @@
 import React from 'react';
-import List from './List';
-import useSemiPersistentState from './useSemiPersistentState';
-import storiesReducer from './storiesReducer';
-import SearchForm from './SearchForm';
-import LastSearches from './LastSearches';
+import List from './components/List/List';
+import useSemiPersistentState from './hooks/useSemiPersistentState';
+import storiesReducer from './reducers/storiesReducer';
+import SearchForm from './components/SearchForm/SearchForm';
+import LastSearches from './components/LastSearches/LastSearches';
 import axios from 'axios';
 import {
   StyledContainer,
@@ -15,8 +15,7 @@ const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
 
 const getUrl = (searchTerm: string, page: number) => {
-  console.log('PAGE', page);
-  return `http://localhost:8080/api/news/?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`;
+  return `https://newsium-backend.herokuapp.com/api/news/?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`;
 };
 
 const extractSearchTerm = (url: string) =>
@@ -44,7 +43,7 @@ const getLastSearches = (urls: string[]) =>
     .slice(-6)
     .slice(0, -1);
 
-function App() {
+const App = () => {
   const [searchTerm, setSearchTerm] = useSemiPersistentState('search', 'React');
   const [stories, dispatchStories] = React.useReducer(storiesReducer, {
     data: [],
@@ -60,10 +59,8 @@ function App() {
     dispatchStories({ type: 'STORIES_FETCH_INIT' });
     try {
       const lastUrl = urls[urls.length - 1];
-      console.log('URL', urls);
-      console.log('LASTURL', lastUrl);
+
       const result = await axios.get(lastUrl);
-      console.log('RESULT', result.data);
 
       dispatchStories({
         type: 'STORIES_FETCH_SUCCESS',
@@ -103,16 +100,13 @@ function App() {
   };
 
   const handleSearch = (searchTerm: string, page: any) => {
-    console.log('PAGE IN HANDLE SEARCG', page);
     const url = getUrl(searchTerm, page);
     setUrls(urls.concat(url));
   };
 
   const handleMore = () => {
     const lastUrl = urls[urls.length - 1];
-    console.log('LAST URL IN HANDLE MORE', lastUrl);
     const searchTerm = extractSearchTerm(lastUrl);
-    console.log('SEARCH TERM IN HANDLE MORE', searchTerm);
     handleSearch(searchTerm, stories.page + 1);
   };
 
@@ -145,6 +139,6 @@ function App() {
       )}
     </StyledContainer>
   );
-}
+};
 
 export default App;

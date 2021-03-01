@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledLabel, StyledInput } from './styles';
+import { StyledLabel, StyledInput } from '../../styles';
 
 type InputWithLabelProps = {
   id: string;

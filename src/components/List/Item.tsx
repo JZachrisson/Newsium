@@ -1,9 +1,7 @@
 import React from 'react';
-import styles from './App.module.css';
-import cs from 'classnames';
 import moment from 'moment';
-import { StyledItem, StyledButtonSmall, StyledColumn } from './styles';
-import { ReactComponent as Check } from './check.svg';
+import { StyledItem, StyledButtonSmall, StyledColumn } from '../../styles';
+import { ReactComponent as Check } from '../../assets/check.svg';
 
 type ItemProps = {
   item: Story;
@@ -35,11 +33,7 @@ const Item = ({ item, onRemoveItem }: ItemProps) => {
         {item.points}
       </StyledColumn>
       <StyledColumn className="hide" width="10%">
-        <StyledButtonSmall
-          type="button"
-          onClick={handleRemoveItem}
-          className={cs(styles.button, styles.buttonSmall)}
-        >
+        <StyledButtonSmall type="button" onClick={handleRemoveItem}>
           Dismiss
           <Check height="18px" width="18px" />
         </StyledButtonSmall>

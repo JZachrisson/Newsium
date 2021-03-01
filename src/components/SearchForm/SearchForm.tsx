@@ -1,6 +1,6 @@
 import React from 'react';
-import InputWithLabel from './InputWithLabel';
-import { StyledSearchForm, StyledButtonLarge } from './styles';
+import InputWithLabel from '../InputWithLabel/InputWithLabel';
+import { StyledSearchForm, StyledButtonLarge } from '../../styles';
 
 type SearchFormProps = {
   searchTerm: string;

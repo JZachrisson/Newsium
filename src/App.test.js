@@ -5,10 +5,9 @@ import axios from 'axios';
 jest.mock('axios');
 
 import App from './App';
-import Item from './Item';
-import List from './List';
-import SearchForm from './SearchForm';
-import InputWithLabel from './InputWithLabel';
+import Item from './components/List/Item';
+import List from './components/List/List';
+import SearchForm from './components/SearchForm/SearchForm';
 
 describe('Item', () => {
   const item = {
@@ -47,11 +46,6 @@ describe('Item', () => {
     expect(handleRemoveItem).toHaveBeenCalledWith(item);
 
     expect(component.root.findAllByType(Item).length).toEqual(1);
-  });
-
-  test('renders snapshot', () => {
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
   });
 });
 

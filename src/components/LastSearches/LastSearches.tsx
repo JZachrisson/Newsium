@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledButtonSmall } from './styles';
+import { StyledButtonSmall } from '../../styles';
 
 type LastSearchesProps = {
   lastSearches: string[];
